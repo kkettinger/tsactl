@@ -1,0 +1,17 @@
+version: "2"
+linters:
+  default: none
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - errorlint
+    - gocritic
+    - gosec
+    - intrange
+  exclusions:
+    rules:
+      - linters: [ "errcheck" ]
+        source: "^\\s*defer\\s+"

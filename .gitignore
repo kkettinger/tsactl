@@ -1,0 +1,7 @@
+.idea/
+dist/
+go.work*
+/*.png
+/*.csv
+*.log
+*.bin
