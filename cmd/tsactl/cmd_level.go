@@ -10,7 +10,7 @@ type LevelCmd struct {
 	Unit         TraceUnit `help:"Set trace unit (${trace_unit_opts})" short:"u" group:"Level flags:" placeholder:"UNIT"`
 	RefLevel     *int      `help:"Set trace reference level in dBm" name:"ref" group:"Level flags:" placeholder:"REFLEVEL"`
 	RefLevelAuto bool      `help:"Set trace reference level to auto" name:"ref-auto" group:"Level flags:"`
-	Scale        *int      `help:"Set trace scale" short:"s" group:"Level flags:" placeholder:"SCALE"`
+	Scale        *float64  `help:"Set trace scale" short:"s" group:"Level flags:" placeholder:"SCALE"`
 }
 
 func (c *LevelCmd) Validate() error {
@@ -86,7 +86,7 @@ func (c *LevelCmd) SetRefLevelAuto(d *tinysa.Device) error {
 func (c *LevelCmd) SetScale(d *tinysa.Device) error {
 	fmt.Println("set display scale to", *c.Scale)
 	if err := d.SetTraceScale(*c.Scale); err != nil {
-		return fmt.Errorf("failed to set scale to %d: %w", *c.Scale, err)
+		return fmt.Errorf("failed to set scale to %f: %w", *c.Scale, err)
 	}
 	return nil
 }
