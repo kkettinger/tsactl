@@ -7,7 +7,7 @@ replace github.com/alecthomas/kong => github.com/kkettinger/kong v1.10.1-short-t
 require (
 	github.com/alecthomas/kong v1.10.0
 	github.com/govalues/decimal v0.1.36
-	github.com/kkettinger/go-tinysa v0.3.0
+	github.com/kkettinger/go-tinysa v0.3.1
 )
 
 require (
