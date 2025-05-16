@@ -58,7 +58,9 @@ func main() {
 			"trace_calc_opts": traceCalcOpts,
 			"trace_unit_opts": traceUnitOpts,
 			"sweep_mode_opts": sweepModeOpts,
-		})
+		},
+		kong.WithHyphenPrefixedParameters(true),
+	)
 
 	err := ctx.Run(&cli.Globals)
 	ctx.FatalIfErrorf(err)
