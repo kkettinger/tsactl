@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/alecthomas/kong"
 	"github.com/kkettinger/go-tinysa"
 )
@@ -11,6 +12,7 @@ type LevelCmd struct {
 	RefLevel     *int      `help:"Set trace reference level in dBm" name:"ref" group:"Level flags:" placeholder:"REFLEVEL"`
 	RefLevelAuto bool      `help:"Set trace reference level to auto" name:"ref-auto" group:"Level flags:"`
 	Scale        *float64  `help:"Set trace scale" short:"s" group:"Level flags:" placeholder:"SCALE"`
+	LNA          *bool     `help:"Enable low noise amplifier (LNA)" negatable:"" group:"Level flags:"`
 }
 
 func (c *LevelCmd) Validate() error {
@@ -38,6 +40,14 @@ func (c *LevelCmd) Run(globals *Globals, ctx *kong.Context) error {
 
 	if c.Scale != nil {
 		ops = append(ops, c.SetScale)
+	}
+
+	if c.LNA != nil {
+		if *c.LNA {
+			ops = append(ops, c.EnableLNA)
+		} else {
+			ops = append(ops, c.DisableLNA)
+		}
 	}
 
 	if len(ops) == 0 {
@@ -87,6 +97,22 @@ func (c *LevelCmd) SetScale(d *tinysa.Device) error {
 	fmt.Println("set display scale to", *c.Scale)
 	if err := d.SetTraceScale(*c.Scale); err != nil {
 		return fmt.Errorf("failed to set scale to %f: %w", *c.Scale, err)
+	}
+	return nil
+}
+
+func (c *LevelCmd) EnableLNA(d *tinysa.Device) error {
+	fmt.Println("enable lna")
+	if err := d.EnableLNA(); err != nil {
+		return fmt.Errorf("failed to enable lna: %w", err)
+	}
+	return nil
+}
+
+func (c *LevelCmd) DisableLNA(d *tinysa.Device) error {
+	fmt.Println("disable lna")
+	if err := d.DisableLNA(); err != nil {
+		return fmt.Errorf("failed to disable lna: %w", err)
 	}
 	return nil
 }
