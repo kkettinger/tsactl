@@ -1,15 +1,16 @@
 package main
 
 import (
-	"github.com/alecthomas/kong"
 	"os"
 	"strings"
+
+	"github.com/alecthomas/kong"
 )
 
 type Globals struct {
-	Device   string `help:"Device serial port, e.g. /dev/ttyACM0 or COM1" short:"D" placeholder:"PORT" env:"tsactl_DEVICE"`
-	Baudrate int    `help:"Device baudrate rate" default:"115200" env:"tsactl_BAUDRATE"`
-	Debug    bool   `help:"Enable debug output" env:"tsactl_DEBUG"`
+	Device   string `help:"Device serial port, e.g. /dev/ttyACM0 or COM1" short:"D" placeholder:"PORT" env:"TSACTL_DEVICE"`
+	Baudrate int    `help:"Device baudrate rate" default:"115200" env:"TSACTL_BAUDRATE"`
+	Debug    bool   `help:"Enable debug output" env:"TSACTL_DEBUG"`
 }
 
 type Cli struct {

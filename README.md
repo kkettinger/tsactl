@@ -59,9 +59,9 @@ To view all available flags for a command, run: `tsactl command --help`
 
 | Flag           | Description                              | Default     | Env                     |
 |----------------|------------------------------------------|-------------|-------------------------|
-| `--device, -D` | Device port (e.g. /dev/ttyACM0 or COM1)  | Auto-detect | tsactl_DEVICE           |
-| `--baudrate`   | Device baud rate                         | 115200      | tsactl_BAUDRATE         |
-| `--debug`      | Debug output                             | False       | tsactl_DEBUG            |
+| `--device, -D` | Device port (e.g. /dev/ttyACM0 or COM1)  | Auto-detect | TSACTL_DEVICE           |
+| `--baudrate`   | Device baud rate                         | 115200      | TSACTL_BAUDRATE         |
+| `--debug`      | Debug output                             | False       | TSACTL_DEBUG            |
 
 
 ## Example usage
