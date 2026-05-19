@@ -5,7 +5,7 @@ go 1.24.1
 require (
 	github.com/alecthomas/kong v1.12.1
 	github.com/govalues/decimal v0.1.36
-	github.com/kkettinger/go-tinysa v0.4.0
+	github.com/kkettinger/go-tinysa v0.4.2
 )
 
 require (
